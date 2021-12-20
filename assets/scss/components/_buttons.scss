@@ -1,0 +1,46 @@
+@import "../helpers/mixin";
+
+.ctpt-widget {
+    &__delivery-button {
+        color: $main-text-color;
+        background: #ffffff;
+        height: 36px;
+        padding: 0 12px;
+        cursor: pointer;
+        border: none;
+        position: relative;
+        z-index: 2;
+        @include flexbox;
+        @include align-items-center;
+        @include transition(all 0.2s);
+        @include box-shadow(0px 2px 2px rgba(0, 0, 0, 0.15));
+        svg {
+            margin-right: 10px;
+            fill: #A2ABBB;
+        }
+        &.current, &:hover {
+            color: $primary-text-hover;
+            background: $light-bg-color;
+            @include box-shadow(none);
+            svg {
+                fill: $primary-text-hover;
+            }
+        }
+        
+        &-wrap {
+            position: absolute;
+            top: 10px;
+            right: 70px;
+            display: none;
+            
+            &.current {
+                @include flexbox;
+            }
+    
+            @include max-small {
+                top: 73px;
+                right: 98px;
+            }
+        }
+    }
+}

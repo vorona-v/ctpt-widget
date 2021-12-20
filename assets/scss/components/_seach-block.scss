@@ -1,0 +1,63 @@
+@import "../helpers/mixin";
+
+.ctpt-widget__map {
+    .ymaps-2-1-79-searchbox {
+        &__normal-layout {
+            width: 398px;
+            
+            @include max-small {
+                width: 338px;
+            }
+        }
+        &-input {
+            &__input {
+                height: 36px;
+                line-height: 36px;
+                font-size: 15px;
+                @include roboto-regular;
+                @include border-radius(0);
+            }
+            &.ymaps-2-1-79-_focused {
+                box-shadow: inset 0 0 0 2px $primary-bg-color;
+            }
+        }
+        
+        &-button {
+            height: 36px;
+            background-color: $primary-bg-color;
+            border-color: $primary-bg-color;
+            &-text {
+                font-size: 13px;
+                line-height: 36px;
+                padding: 0 12px 0 42px;
+                color: #ffffff;
+                position: relative;
+                &:before {
+                    content: '';
+                    position: absolute;
+                    top: 50%;
+                    left: 12px;
+                    width: 20px;
+                    height: 16px;
+                    background: url("../images/icon/search-icon.svg");
+                    background-repeat: no-repeat;
+                    background-size: cover;
+                    background-position: center;
+                    @include transform(translate(0, -50%));
+                }
+            }
+            &:hover {
+                background-color: #ffffff;
+                color: $primary-bg-color;
+                border-color: $primary-bg-color;
+                .ymaps-2-1-79-searchbox-button-text {
+                    color: $primary-bg-color;
+                    &:before {
+                        background: url("../images/icon/search-icon-h.svg");
+                    }
+                }
+            }
+        }
+    }
+    
+}

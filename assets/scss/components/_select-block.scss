@@ -1,0 +1,106 @@
+.ctpt-widget {
+    &__select {
+        position: relative;
+        display: block;
+        min-width: 200px;
+        margin-right: 16px;
+        flex-grow: 1;
+        @include max-small {
+            min-width: 100%;
+            margin: 0 0 8px;
+        }
+    }
+    
+    &__select__head {
+        width: 100%;
+        max-width: 100%;
+        padding: 9px 12px 8px;
+        font-size: 16px;
+        line-height: 1.19;
+        color: $main-text-color;
+        cursor: pointer;
+        border: 2px solid #DDDDDD;
+        @include border-radius(4px);
+        @include roboto-regular;
+        svg {
+            width: 7px;
+            position: absolute;
+            right: 14px;
+            bottom: 50%;
+            @include transition(.2s ease-in);
+            @include transform(translateY(50%) rotate(-90deg));
+            .path {
+                fill: $primary-text-color;
+            }
+        }
+    }
+    
+    &__select__head.open {
+        @include border-radius(4px 4px 0 0);
+        svg {
+            transform: translateY(50%) rotate(90deg);
+        }
+    }
+    
+    &__select__list {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: #fff;
+        overflow-x: hidden;
+        overflow-y: auto;
+        z-index: 100;
+        margin: -2px 0 0;
+        padding: 0;
+        font-size: 16px;
+        line-height: 1.19;
+        color: $main-text-color;
+        @include border-radius(0 0 4px 4px);
+        @include box-shadow(0px 2px 8px rgba(0, 0, 0, 0.15));
+    }
+    
+    &__select__item {
+        position: relative;
+        border-top: 1px solid rgba(224, 229, 231, 0.5);
+        padding: 10px 15px;
+        cursor: pointer;
+        list-style-type: none;
+        @include flexbox;
+        @include justify-content-space-between;
+        @include align-items-center;
+        @include transition(all 0.2s);
+        &:hover {
+            background-color: #E6F1F9;
+        }
+        
+        &__price {
+            color: $primary-text-color;
+            font-size: 20px;
+            line-height: 1;
+            @include roboto-regular;
+        }
+        
+        &__plane {
+            @include flexbox;
+            @include flex-direction-column;
+        }
+        
+        &__name {
+            @include roboto-medium;
+            margin-bottom: 4px;
+        }
+        
+        &__info-delivery {
+            font-size: 13px;
+            line-height: 1;
+            @include roboto-regular;
+            span {
+                color: #7D7D7E;
+            }
+        }
+        
+    }
+}
+

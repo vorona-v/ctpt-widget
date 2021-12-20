@@ -1,0 +1,225 @@
+.ctpt-widget {
+    .ctpt-widget__primary-title {
+    
+    }
+    &__modal {
+        visibility: hidden;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+    &__modal.is-visible {
+        visibility: visible;
+    }
+    
+    &__modal-overlay {
+        position: fixed;
+        z-index: 5;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: hsla(0, 0%, 0%, 0.05);
+        visibility: hidden;
+        opacity: 0;
+        transition: visibility 0s linear 0.3s, opacity 0.3s;
+    }
+    &__modal.is-visible  .ctpt-widget__modal-overlay {
+        opacity: 1;
+        visibility: visible;
+        transition-delay: 0s;
+    }
+    
+    &__modal-wrapper {
+        position: absolute;
+        z-index: 9;
+        top: 50%;
+        left: 50%;
+        width: 100%;
+        max-width: 440px;
+        background-color: #fff;
+        @include transform(translate(-50%,-50%));
+        @include box-shadow(inset 0px -1px 0px #D4D8DD);
+    }
+    
+    &__modal-transition {
+        transition: all 0.3s 0.12s;
+        opacity: 0;
+    }
+    
+    &__modal.is-visible  .ctpt-widget__modal-transition {
+        opacity: 1;
+    }
+    
+    &__modal-content {
+        .ctpt-widget__button {
+            width: 128px;
+        }
+        
+        &-wrap {
+            width: 100%;
+    
+            @include flexbox;
+            position: relative;
+            border-bottom: 1px solid $primary-bg-color;
+            overflow: hidden;
+        }
+    }
+    
+    &__modal-header {
+        position: relative;
+    }
+    
+    &__modal-heading {
+        font-size: 1.125em;
+        margin: 0;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+    
+    /*&__modal-dates-slider {
+        @include flexbox;
+        position: relative;
+        border-bottom: 1px solid $primary-bg-color;
+        overflow: hidden;
+    }*/
+    
+    &__modal-date {
+        height: 56px;
+        min-width: 65px;
+        @include flexbox;
+        @include flex-direction-column;
+        @include align-items-center;
+        @include justify-content-center;
+        padding: 5px 10px;
+        position: relative;
+        flex-shrink: 0;
+        cursor: pointer;
+        &:before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: transparent;
+        }
+        
+        &.disabled {
+            background: #EFF2F5;
+            @include border-radius(4px 4px 0 0);
+    
+            .ctpt-widget__modal-day-title, .ctpt-widget__modal-date-title {
+                opacity: 0.5;
+            }
+        }
+    }
+    
+    &__modal-day-title, &__modal-date-title {
+        color: $main-text-color;
+        font-size: 14px;
+        line-height: 1.14;
+    }
+    
+    &__modal-day-title {
+        @include roboto-medium;
+        margin-bottom: 4px;
+    }
+    
+    &__modal-date-title {
+        @include roboto-regular;
+    }
+    
+    &__modal-timetable-wrap {
+        @include flexbox;
+        @include flex-direction-column;
+    }
+    
+    &__modal-body {
+        padding: 0 20px 24px;
+    }
+    
+    &__modal-content {
+        @include flexbox;
+        @include flex-direction-column;
+    }
+    
+    &__modal-item {
+        padding: 8px 16px;
+        @include flexbox;
+        @include align-items-center;
+        @include justify-content-space-between;
+        border-bottom: 1px solid #d6d9db;
+    }
+    
+    
+    
+    &__modal-time {
+        color: $main-text-color;
+        font-size: 16px;
+        line-height: 1.19;
+        @include roboto-regular;
+    }
+    
+    .swiper-slide-active {
+        background: rgba(0, 115, 188, 0.1);
+        @include border-radius(4px 4px 0 0);
+        &:before {
+            background: $primary-bg-color;
+        }
+    
+        .ctpt-widget__modal-day-title, .ctpt-widget__modal-date-title {
+            color: $primary-bg-color;
+        }
+    }
+    
+    .swiper-button {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        width: 66px;
+        height: 54px;
+        z-index: 10;
+        margin: 0;
+        @include flexbox;
+        @include align-items-center;
+        cursor: pointer;
+        
+        img {
+            width: 13px;
+            height: 20px;
+        }
+        
+        &:after {
+            display: none;
+        }
+        
+        &.swiper-button-disabled {
+            display: none;
+        }
+    }
+    
+    .swiper-button-prev {
+        padding-left: 10px;
+        left: 0;
+        display: none;
+        background: -moz-linear-gradient(left, rgba(255,255,255,1) 0%, rgba(255,255,255,0.39) 100%); /* FF3.6-15 */
+        background: -webkit-linear-gradient(left, rgba(255,255,255,1) 0%,rgba(255,255,255,0.39) 100%); /* Chrome10-25,Safari5.1-6 */
+        background: linear-gradient(to right, rgba(255,255,255,1) 0%,rgba(255,255,255,0.39) 100%);
+        @include justify-content-flex-start;
+        img {
+            @include transform(scaleX(-1));
+        }
+    }
+    
+    .swiper-button-next {
+        right: 0;
+        padding-right: 10px;
+        background: linear-gradient(270deg, #FFFFFF 39.06%, rgba(255, 255, 255, 0) 100%);
+        @include justify-content-flex-end;
+    }
+}
+
+

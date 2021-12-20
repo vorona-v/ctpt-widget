@@ -1,0 +1,160 @@
+@import "../helpers/mixin";
+
+@import "select-block";
+
+.ctpt-widget {
+    &__panel-details {
+        -webkit-transition: right ease 0.5s;
+        transition: right ease 0.5s;
+    
+        &.current {
+            right: 0;
+        }
+    
+        &__list {
+            height: calc(100% - 75px);
+            overflow: auto;
+            padding-top: 12px;
+        }
+    
+        .ctpt-widget__primary-title {
+            padding: 8px 32px;
+            height: 60px;
+            @include flexbox;
+            @include align-items-center;
+        }
+        
+        &__back {
+            width: 32px;
+            height: 60px;
+            @include flexbox;
+            position: absolute;
+            top: 0;
+            left: 0;
+            cursor: pointer;
+            z-index: 4;
+            svg {
+                width: 12px;
+                height: 25px;
+                margin: auto;
+                .path {
+                    fill: #97A3B6;
+                    @include transition(0.2s);
+                }
+            }
+            &:hover {
+                svg {
+                    .path {
+                        fill: $main-text-color;
+                    }
+                }
+            }
+        }
+        
+        &__item {
+            padding: 0 16px;
+        }
+        
+        &__item-header {
+           @include flexbox;
+            @include align-items-center;
+        }
+    
+        &__logo {
+            width: 60px;
+            height: 24px;
+            flex-shrink: 0;
+            margin-right: 16px;
+            @include flexbox;
+            @include align-items-center;
+            img {
+                width: auto;
+                height: auto;
+                max-width: 100%;
+                max-height: 100%;
+                flex-shrink: 0;
+            }
+        }
+        
+        &__info {
+            flex-grow: 1;
+            &-delivery, &-amount {
+                display: block;
+                font-size: 16px;
+                line-height: 1.17;
+                color: $main-text-color;
+            }
+    
+            &-amount {
+                @include roboto-medium;
+            }
+    
+            &-delivery {
+                @include roboto-regular;
+                color: $secondary-text-color;
+                //margin-bottom: 8px;
+                span {
+                    color: #7D7D7E;
+                    margin-left: 12px;
+                }
+            }
+        }
+        
+        &__price-wrap {
+            @include flexbox;
+            @include flex-wrap-wrap;
+            @include align-items-center;
+        }
+        
+        &__price-wrap,
+        &__address-wrap,
+        &__working-hours-wrap,
+        &__phones-wrap,
+        &__description-wrap {
+            margin-bottom: 16px;
+        }
+        
+        &__price {
+            @include roboto-medium;
+            color: $primary-text-color;
+            font-size: 20px;
+            line-height: 1.15;
+            margin-right: 16px;
+        }
+        
+        &__title {
+            width: 100%;
+            color: #7D7D7E;
+            font-size: 14px;
+            line-height: 1.17;
+            margin-bottom: 4px;
+            @include roboto-regular;
+        }
+        &__info-wrap {
+            color: $secondary-text-color;
+            font-size: 16px;
+            line-height: 1.17;
+            @include roboto-regular;
+            span {
+                display: block;
+            }
+        }
+        &__phones-wrap {
+            .ctpt-widget__panel-details__info {
+                &-wrap {
+                    @include flexbox;
+                    @include flex-direction-column;
+                }
+                &-phone {
+                    color: $main-text-color;
+                    text-decoration: none;
+                    @include transition(all 0.2s);
+                    &:hover {
+                        color: #000000;
+                    }
+                }
+            }
+            
+        }
+    }
+}

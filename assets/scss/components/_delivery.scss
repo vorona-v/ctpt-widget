@@ -1,0 +1,250 @@
+@import "../helpers/mixin";
+
+.ctpt-widget {
+    &__price {
+        @include roboto-bold;
+        color: $main-text-color;
+    }
+    &__days {
+        color: $main-text-color;
+        @include roboto-regular;
+    }
+    
+    &__delivery-container {
+        padding: 0 13px;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        background: #ffffff;
+    
+        @include max-small {
+            padding: 0 10px;
+        }
+    
+        .ctpt-widget__primary-title{
+            padding: 18px 0;
+        }
+    }
+    
+    &__delivery-type {
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        width: 460px;
+        z-index: 7;
+        height: calc(100% - 165px);
+        background: #EFF2F5;
+        @include transition(right 200ms ease-out, opacity 100ms ease-out);
+        @include transform(translate(-50%,0));
+        
+        &.current {
+            top: calc(56px + 60px);
+            @include transition(top 500ms ease-out, opacity 300ms ease-out);
+        }
+    
+        @include max-small {
+            /*top: 56px;
+            bottom: 40px;
+            right: - calc(100% - 20px);
+            z-index: 2;*/
+            &.current {
+                width: calc(100% - 30px);
+                top: 151px;
+                @include transition(top 500ms ease-out, opacity 300ms ease-out);
+            }
+        }
+        
+        &__options-content {
+            height: calc(100% - 196px);
+            overflow: auto;
+            
+            //position: relative;
+    
+            @include max-small {
+                height: calc(100% - 160px);
+            }
+        }
+        
+        &__options {
+            @include flexbox;
+        }
+        
+        &__item {
+            padding: 12px 16px;
+            width: 50%;
+            cursor: pointer;
+            font-size: 14px;
+            color: $main-text-color;
+            position: relative;
+            @include roboto-medium;
+            @include transition(all 0.2s);
+            @include border-radius(4px 4px 0 0);
+            &:after {
+                content: '';
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                height: 2px;
+                background: transparent;
+            }
+            
+            &.current, &:hover {
+                color: $primary-text-hover;
+                background: rgba($primary-bg-color, 0.1);
+    
+                &:after {
+                    background: $primary-bg-color;
+                }
+                
+                .ctpt-widget__price {
+                    color: $primary-text-hover;
+                }
+            }
+            
+            &-details {
+                span {
+                    display: block;
+                }
+            }
+    
+            @include max-small {
+                width: auto;
+                padding: 8px 12px;
+            }
+        }
+        &__list-item {
+            padding: 12px 13px;
+            height: 80px;
+            @include flexbox;
+            @include align-items-center;
+            cursor: pointer;
+            background: #ffffff;
+    
+            &:hover {
+                background: rgba($primary-bg-color, 0.05);
+            }
+        }
+        &__info {
+            width: 86px;
+            margin: 0 auto;
+            &-date, &-type, &-term, &-term-info, &-days {
+                display: block;
+                font-size: 16px;
+                line-height: 1.17;
+                color: $main-text-color;
+                @include roboto-regular;
+                span {
+                    @include roboto-medium;
+                }
+            }
+            &-days {
+                margin-bottom: 4px;
+            }
+            &-term {
+                font-size: 13px;
+                line-height: 1.17;
+                color: #7D7D7E;
+                margin-bottom: 4px;
+            }
+            &-term-info {
+                font-size: 13px;
+                line-height: 1.17;
+                color: #FF8A01;
+                @include flexbox;
+                @include align-items-center;
+                svg {
+                    margin-right: 4px;
+                }
+            }
+        }
+        &__logo {
+            width: 90px;
+            flex-shrink: 0;
+            margin-right: 16px;
+            position: relative;
+            padding-right: 20px;
+            img {
+                width: auto;
+                height: auto;
+                max-width: 100%;
+                max-height: 100%;
+            }
+        }
+        
+        &__price-wrap {
+            @include flexbox;
+            @include flex-direction-column;
+            @include align-items-center;
+    
+            .ctpt-widget__button {
+                @include max-small {
+                    width: 96px;
+                }
+            }
+            
+        }
+        &__price {
+            @include roboto-medium;
+            font-size: 20px;
+            line-height: 1.15;
+            color: $main-text-color;
+        }
+        &__button {
+            width: 70px;
+            height: 28px;
+            color: #ffffff;
+            background: $primary-bg-color;
+            border: 1px solid $primary-bg-color;
+            cursor: pointer;
+            font-size: 13px;
+            @include roboto-medium;
+            @include flexbox-center;
+            @include transition(all 0.2s);
+            
+            @include min-medium {
+                &:hover {
+                    color: $primary-bg-color;
+                    background: #ffffff;
+                }
+            }
+        }
+    }
+    &__delivery-filters-list {
+        @include flexbox;
+        padding: 11px 25px 11px 13px;
+        
+    }
+    &__delivery-filter {
+        width: 33.3333%;
+        height: 38px;
+        @include flexbox-center;
+        color: #2E3A4C;
+        background: #ffffff;
+        border: 1px solid #D5DBE5;
+        font-size: 14px;
+        line-height: 1;
+        @include roboto-regular;
+        cursor: pointer;
+        @include transition(all 0.2s);
+        
+        @include max-small {
+            font-size: 12px;
+        }
+        
+        &.current, &:hover {
+            color: #ffffff;
+            background: #97A3B6;
+        }
+        
+        &:first-child {
+            &.current, &:hover {
+                @include border-radius(4px 0 0 4px);
+            }
+        }
+        
+        &:last-child {
+            &.current, &:hover {
+                @include border-radius(0 4px 4px 0);
+            }
+        }
+    }
+}

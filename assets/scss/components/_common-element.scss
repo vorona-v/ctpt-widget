@@ -1,0 +1,314 @@
+@import "../helpers/mixin";
+
+.ctpt-widget {
+    &__logo-link {
+        display: inline-block;
+    }
+    
+    &__load-spinner {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 82px;
+        background: #ffffff;
+        z-index: 2;
+        color: $primary-bg-color;
+        font-size: 15px;
+        line-height: 1.33;
+        @include flexbox-center;
+        @include roboto-regular;
+        
+        animation: blink 4s linear infinite;
+        svg {
+            margin-right: 12px;
+            animation: rotateLogo 1.5s linear infinite;
+        }
+    }
+    
+    &__scroll {
+        @include scrollbar {
+            width: 12px;
+            background-color: #EFF2F5;
+            @include border-radius(333px);
+        }
+        @include scrollbar-track {
+        
+        }
+        @include scrollbar-thumb {
+            @include border-radius(333px);
+            background-color: rgba(#97A3B6, 0.5);
+            opacity: 0.5;
+            width: 8px;
+        }
+    }
+    
+    &__delivery-rating {
+        @include flexbox;
+        @include align-items-center;
+        svg {
+            &.current {
+                path {
+                    fill: #FF9600;
+                }
+            }
+        }
+    }
+    
+    &__delivery-info-hint {
+        position: absolute;
+        top: 50%;
+        right: 0;
+        @include transform(translate(0,-50%));
+        cursor: pointer;
+        &:hover {
+            svg path {
+                fill: $primary-text-hover;
+            }
+        }
+    }
+    
+    &__button {
+        width: 128px;
+        height: 40px;
+        color: $primary-bg-color;
+        background: #ffffff;
+        border: 1px solid $primary-bg-color;
+        cursor: pointer;
+        font-size: 20px;
+        line-height: 1;
+        text-transform: uppercase;
+        @include roboto-medium;
+        @include flexbox-center;
+        @include transition(all 0.2s);
+        @include border-radius(4px);
+        
+        @include min-medium {
+            &:hover {
+                color: #ffffff;
+                background: $primary-bg-color;
+            }
+        }
+    }
+    
+    &__disabled {
+        .ctpt-widget {
+            &__panel-content {
+                &__status {
+                    &-icon{
+                        &:before {
+                            content: url("../images/icon/not-checked-icon.svg") !important;
+                        }
+                    }
+                }
+                &__logo {
+                    img {
+                        @include filter(grayscale(100%),gray);
+                        opacity: 0.33;
+                    }
+                }
+                &__info {
+                    opacity: 0.33;
+                }
+            }
+        }
+    }
+    
+    &__close {
+        border: none;
+        background: transparent;
+        position: absolute;
+        right: 0;
+        top: 50%;
+        padding: 10px;
+        cursor: pointer;
+        @include transform(translate(0,-50%));
+        @include transition(all 0.2s);
+        svg {
+            width: 16px;
+            height: 16px;
+            opacity: 1;
+        }
+        @include min-medium {
+            &:hover {
+                svg path {
+                    opacity: 1;
+                    fill: $main-text-color;
+                }
+            }
+        }
+    }
+    
+    &__primary-title {
+        text-align: left;
+        font-size: 20px;
+        line-height: 1.17;
+        color: $main-title-color;
+        @include roboto-regular;
+        padding: 18px 13px;
+        position: relative;
+        span {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 238px;
+        }
+    
+        @include max-small {
+            padding: 16px 0 15px;
+            font-size: 18px;
+            height: 60px;
+            @include flexbox-center;
+        }
+    }
+    
+    &__sidebar-button {
+        width: 100%;
+        height: 60px;
+        cursor: pointer;
+        @include flexbox-center;
+        @include transition(all 0.2s);
+        position: relative;
+        &:after {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            width: 0;
+            height: 0;
+            opacity: 0;
+            visibility: hidden;
+            border-style: solid;
+            border-width: 10px 0 10px 10px;
+            border-color: transparent transparent transparent #ffffff;
+            @include transform(translate(0,-50%));
+        }
+        
+        &:nth-child(odd) {
+            &:before {
+                content: '';
+                position: absolute;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                height: 1px;
+                background: $current-bg-color;
+            }
+        }
+        
+        &.current {
+            background: $current-bg-color;
+        }
+    
+        &-setting-icon {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            width: 20px;
+            height: 20px;
+            background: #FF0000;
+            @include border-radius(50%);
+            display: none;
+            
+            &.current {
+                @include flexbox-center;
+            }
+        }
+        
+        @include min-medium {
+            &:hover {
+                background: $current-bg-color;
+            }
+        }
+        
+        &-back-text {
+            font-size: 10px;
+            color: $primary-text-color;
+            @include roboto-medium;
+            text-align: center;
+            margin-bottom: 4px;
+        }
+        
+        &-wrap {
+            flex-grow: 1;
+            @include flexbox;
+            @include flex-direction-column;
+        }
+        
+        &-checked {
+            &.current {
+                background: $current-bg-color;
+                &:after {
+                    display: none;
+                }
+            }
+        }
+        
+        &__hint {
+            height: 30px;
+            position: absolute;
+            right: -300px;
+            background: #E6F2FB;
+            color: $primary-text-color;
+            padding: 5px 12px;
+            border-radius: 30px;
+            cursor: default;
+            opacity: 0;
+            z-index: 6;
+            top: 50%;
+            width: max-content;
+            @include border-radius(30px);
+            @include transition(right 500ms ease-out, opacity 300ms ease-out);
+    
+            &.show {
+                right: 67px;
+                opacity: 1;
+            }
+            
+            &.ctpt-widget-list {
+                top: 17px;
+                @include max-medium {
+                    top: 76px;
+                }
+            }
+            
+            &.ctpt-widget-cash {
+                top: 76px;
+                @include max-medium {
+                    top: 134px;
+                }
+            }
+            
+            &.ctpt-widget-cal {
+                top: 134px;
+                @include max-medium {
+                    top: 195px;
+                }
+            }
+            
+            &.ctpt-widget-delivery {
+                top: 195px;
+                @include max-medium {
+                    top: 254px;
+                }
+            }
+        }
+    }
+}
+
+@keyframes rotateLogo {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes blink {
+    0% { color: #007DD5 }
+    25% { color: rgba(0, 125, 213, 0.1) }
+    50% { color: #007DD5 }
+    75% { color: rgba(0, 125, 213, 0.1) }
+    100% { color: #007DD5 }
+}
